@@ -58,3 +58,13 @@ html{scroll-padding-top:28px}
 @media(max-width:767px){.brand-partners{width:100%;justify-content:space-between;gap:16px}.brand-partners .clinic-brand{width:205px}.agency-brand{width:105px;height:48px}}
 
 .agency-brand{background:transparent;width:180px;height:80px;padding:0}.agency-brand img{object-fit:contain}@media(max-width:1100px){.agency-brand{width:155px;height:68px}}@media(max-width:767px){.agency-brand{width:125px;height:55px}}
+
+/* One co-brand lockup, with matched optical weights. */
+.brand-partners{gap:18px;padding:10px 18px;border:1px solid #d6ddeb;border-radius:12px;background:#fff;min-height:72px}
+.brand-partners .clinic-brand{width:205px}
+.brand-cross{font-family:ClinicLato,Arial,sans-serif;font-size:27px;line-height:1;color:#7a8bad;font-weight:400;flex-shrink:0}
+.agency-brand{width:150px;height:50px;position:relative;overflow:hidden;padding:0;background:transparent;border-radius:0}
+.agency-brand img{position:absolute;width:184px;max-width:none;height:81px;left:50%;top:50%;transform:translate(-50%,-50%);object-fit:contain}
+.nav{min-height:102px;gap:28px}
+@media(max-width:1100px){.brand-partners{gap:12px;padding:8px 14px;min-height:66px}.brand-partners .clinic-brand{width:175px}.agency-brand{width:125px;height:44px}.agency-brand img{width:158px;height:70px}.brand-cross{font-size:25px}.nav{gap:22px}}
+@media(max-width:767px){.brand-partners{width:auto;justify-content:flex-start;gap:12px;padding:10px 12px}.brand-partners .clinic-brand{width:175px}.agency-brand{width:110px;height:44px}.agency-brand img{width:145px;height:64px}.brand-cross{font-size:24px}}
