@@ -82,17 +82,50 @@ function reflectReadingPosition() {
 window.addEventListener('scroll', () => { if (!readingTick) { readingTick = true; requestAnimationFrame(reflectReadingPosition); } }, { passive: true });
 window.addEventListener('resize', reflectReadingPosition);
 reflectReadingPosition();
-const photoChapter = document.querySelector('.photo-chapter');
-if (photoChapter && 'IntersectionObserver' in window) {
-  const photographObserver = new IntersectionObserver(entries => {
-    if (!entries.some(entry => entry.isIntersecting)) return;
-    if (!reduceMotion.matches) photoChapter.animate([
-      { clipPath: 'inset(0 5% 0 0)', opacity: .75 },
-      { clipPath: 'inset(0 0 0 0)', opacity: 1 }
-    ], { duration: 650, easing: arrivalEase });
-    photographObserver.disconnect();
-  }, { threshold: .2 });
-  photographObserver.observe(photoChapter);
-}
-
 reduceMotion.addEventListener('change', event => { if (event.matches) document.getAnimations().forEach(animation => animation.cancel()); });
+
+// Presentation choreography: entrances restart after a section has left the viewport.
+// No hidden CSS state; headings and controls remain available without animation.
+const presentationRuns = new Map();
+function runPresentationEntrance(element, kind) {
+  if (reduceMotion.matches || !Element.prototype.animate) return;
+  presentationRuns.get(element)?.forEach(animation => animation.cancel());
+  const runs = [];
+  const arrive = (target, frames, duration=950, delay=0) => {
+    if (target) runs.push(target.animate(frames, { duration, delay, easing: arrivalEase }));
+  };
+  if (kind === 'pair') {
+    [...element.children].forEach((panel, index) => {
+      arrive(panel, [{ opacity:.25, transform:'translateY(64px)' }, { opacity:1, transform:'translateY(0)' }], 1050, index*160);
+      arrive(panel.querySelector('img'), [{ transform:'scale(1.1)' }, { transform:'scale(1)' }], 1200, index*160);
+    });
+  } else if (kind === 'photo') {
+    arrive(element, [{ clipPath:'inset(0 28% 0 0)', opacity:.4 }, { clipPath:'inset(0 0 0 0)', opacity:1 }], 1100);
+    arrive(element.querySelector('img'), [{ transform:'scale(1.08)' }, { transform:'scale(1)' }], 1300);
+  } else if (kind === 'group') {
+    [...element.children].forEach((item,index) => arrive(item, [{opacity:.3,transform:'translateY(44px)'},{opacity:1,transform:'translateY(0)'}], 900, Math.min(index*110,330)));
+  } else {
+    arrive(element, [{ opacity:.3, transform:'translateY(38px)' }, { opacity:1, transform:'translateY(0)' }], 850);
+  }
+  presentationRuns.set(element,runs);
+}
+if ('IntersectionObserver' in window) {
+  const entrances = new Map();
+  document.querySelectorAll('.section-head').forEach(e=>entrances.set(e,'heading'));
+  document.querySelectorAll('.content-pair').forEach(e=>entrances.set(e,'pair'));
+  document.querySelectorAll('.photo-chapter,.content-selling,.clinic-gallery').forEach(e=>entrances.set(e,'photo'));
+  document.querySelectorAll('.work-list,.price-grid').forEach(e=>entrances.set(e,'group'));
+  const entered = new WeakSet();
+  const presentationObserver = new IntersectionObserver(entries=>{
+    entries.forEach(entry=>{
+      if (entry.intersectionRatio >= .12 && !entered.has(entry.target)) {
+        entered.add(entry.target);
+        runPresentationEntrance(entry.target,entrances.get(entry.target));
+      } else if (!entry.isIntersecting) {
+        const box=entry.target.getBoundingClientRect();
+        if (box.bottom<0 || box.top>innerHeight) entered.delete(entry.target);
+      }
+    });
+  }, { threshold: [0,.12] });
+  entrances.forEach((kind,element)=>presentationObserver.observe(element));
+}

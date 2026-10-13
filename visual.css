@@ -19,3 +19,29 @@ header{border-bottom:1px solid #d6ddeb;background:#fff}.nav{min-height:88px}.nav
 @media print{.reading-progress{display:none}.brand-section{background:#fff;color:#273249;padding:24px 0;margin-top:28px}.brand-section h2,.brand-section h3,.brand-section h4,.brand-section p,.brand-section span,.brand-section dd,.brand-section dt{color:#273249}.brand-section .work-list{display:block}.photo-chapter{margin-top:28px;background:#fff}.photo-chapter img{height:180px}.photo-chapter figcaption{color:#273249;font-size:16pt;padding:20px}.content-copy{padding:20px}.content-photo img{height:150px}.content-selling{background:#edf2fb;color:#273249}.content-selling .content-photo img{min-height:0;height:250px}.content-selling h3,.content-selling h4,.content-selling .content-purpose,.content-selling .content-example,.content-selling .small{color:#273249}.content-selling .content-copy{padding:20px}.content-copy h3{font-size:18pt}.content-copy .content-purpose{font-size:10pt;min-height:0}.content-copy p,.content-copy li{font-size:10pt}#content>.statement{background:#edf2fb;padding:20px}#content>.statement h3,#content>.statement p{color:#273249}.price-option.suggested{background:#edf2fb;color:#273249}.price-option.suggested h3,.price-option.suggested .amount,.price-option.suggested .amount span,.price-option.suggested>p:not(.amount){color:#273249}.hero{min-height:0}.hero h1{font-size:30pt}.photo-chapter,.content-panel{break-inside:avoid}}
 
 @media(min-width:768px){.hero h1{max-width:none;font-size:clamp(48px,4.3vw,64px)}}
+
+/* Paired content uses shared row tracks: headings, explanations and formats align. */
+@supports(grid-template-rows:subgrid){
+ @media(min-width:768px){
+  .content-pair{grid-template-rows:340px repeat(7,auto);row-gap:0;column-gap:32px}
+  .content-pair .content-panel{display:grid;grid-template-rows:subgrid;grid-row:span 8}
+  .content-pair .content-photo{grid-row:1}
+  .content-pair .content-copy{display:grid;grid-row:2/span 7;grid-template-rows:subgrid;row-gap:0;padding:36px 40px}
+  .content-pair .content-copy>*{align-self:start}
+  .content-pair .content-copy h3{min-height:0}
+  .content-pair .content-purpose{min-height:0;margin-bottom:28px}
+  .content-pair .content-copy h4{margin-top:8px}
+  .content-pair .content-copy>.small{grid-row:7}
+ }
+}
+@media(min-width:768px){
+ .section-head{grid-template-columns:repeat(2,minmax(0,1fr));gap:32px}
+ .split{gap:32px}
+ .brand-section .work-list{gap:0 32px}
+ .photo-chapter{grid-template-columns:1fr 1fr}
+ .photo-chapter figcaption{max-width:none;padding:48px 56px;font-size:32px}
+ #content>.statement{grid-template-columns:1fr 1fr;gap:24px 32px}
+ #plan .phase>.split{gap:32px}
+ .brand-section .measurement{gap:32px}
+ .subtotal{grid-template-columns:1fr 1fr 1fr;gap:32px}
+}
