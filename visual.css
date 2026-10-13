@@ -45,3 +45,14 @@ header{border-bottom:1px solid #d6ddeb;background:#fff}.nav{min-height:88px}.nav
  .brand-section .measurement{gap:32px}
  .subtotal{grid-template-columns:1fr 1fr 1fr;gap:32px}
 }
+
+/* Co-branded opening header; it leaves the page as soon as scrolling begins. */
+header{position:relative;top:auto;transition:opacity 160ms ease,transform 220ms var(--motion-ease)}
+header[data-scrolled=true]{opacity:0;transform:translateY(-100%);pointer-events:none;visibility:hidden}
+html{scroll-padding-top:28px}
+.brand-partners{display:flex;align-items:center;gap:24px;flex-shrink:0}
+.brand-partners .clinic-brand{width:228px}
+.agency-brand{display:flex;align-items:center;justify-content:center;background:var(--clinic-blue);border-radius:8px;width:140px;height:60px;padding:10px;flex-shrink:0}
+.agency-brand img{width:100%;height:100%;object-fit:contain}
+@media(max-width:1100px){.brand-partners{gap:18px}.brand-partners .clinic-brand{width:200px}.agency-brand{width:120px;height:54px}.nav{gap:24px}}
+@media(max-width:767px){.brand-partners{width:100%;justify-content:space-between;gap:16px}.brand-partners .clinic-brand{width:205px}.agency-brand{width:105px;height:48px}}

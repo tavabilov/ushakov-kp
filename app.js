@@ -72,6 +72,7 @@ const trackedSections = navigationLinks.map(link => document.querySelector(link.
 const progressLine = document.querySelector('.reading-progress span');
 let readingTick = false;
 function reflectReadingPosition() {
+  document.querySelector("header")?.setAttribute("data-scrolled",String(scrollY>8));
   const available = document.documentElement.scrollHeight - innerHeight;
   if (progressLine) progressLine.style.transform = `scaleX(${available > 0 ? Math.min(1, Math.max(0, scrollY / available)) : 1})`;
   let active;
