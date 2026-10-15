@@ -59,3 +59,5 @@ html{scroll-padding-top:24px}.talk-section{width:100%;max-width:none!important;m
  #competition .local-competitors .adaptation{background:#edf2fb;color:#273249}
 }
 @media screen and (min-width:1000px){#competition .source-note{max-width:none}}
+.content-overview table{table-layout:fixed;width:100%}.content-overview th:first-child{width:24%}.content-overview th:nth-child(2){width:29%}.content-overview th:nth-child(3){width:47%}.rubric-link{display:inline-block;color:#2a4179;font-weight:700;font-size:16px;margin-top:16px}.volume-pending{font-size:16px!important;line-height:1.4!important;margin:16px 0 0!important}
+@media screen and (min-width:1000px){.content-overview td,.content-overview th{padding:10px 14px;font-size:17px;line-height:1.35}.content-overview thead th{font-size:14px}}
