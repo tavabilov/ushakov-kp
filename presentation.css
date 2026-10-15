@@ -52,3 +52,10 @@ html{scroll-padding-top:24px}.talk-section{width:100%;max-width:none!important;m
  .hero-band .hero figure img{height:calc(100svh - 235px)!important;max-height:600px;min-height:0;object-fit:contain;width:100%}
  .hero-band .hero h1{font-size:clamp(44px,4.1vw,62px)!important;line-height:1.06}.hero-band .hero .lead{font-size:20px;line-height:1.4;margin-top:20px}.hero-band .hero .recipient{font-size:17px}.hero-band .hero .actions{margin-top:22px}
 }
+@media screen and (min-width:1000px){
+ #competition .local-competitors table{table-layout:fixed;width:100%}
+ #competition .local-competitors th:first-child{width:24%}#competition .local-competitors th:nth-child(2){width:10%}#competition .local-competitors th:nth-child(3){width:30%}#competition .local-competitors th:nth-child(4){width:36%}
+ #competition .local-competitors td,#competition .local-competitors th{padding:6px 12px;line-height:1.3}
+ #competition .local-competitors .adaptation{background:#edf2fb;color:#273249}
+}
+@media screen and (min-width:1000px){#competition .source-note{max-width:none}}
