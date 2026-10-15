@@ -46,3 +46,9 @@ html{scroll-padding-top:24px}.talk-section{width:100%;max-width:none!important;m
  #competition th,#competition td{padding:8px 14px;font-size:16px}#competition thead th{font-size:13px}#competition .local-competitors th span{margin-top:3px}
  .plan-showcase ul{gap:8px}.plan-showcase li{font-size:18px;line-height:1.35}.report-strip{grid-template-columns:1fr 2fr}.report-strip h3{font-size:20px}
 }
+@media screen and (min-width:1000px){
+ .hero-band .hero{min-height:calc(100svh - 105px)!important;padding:24px 0!important;box-sizing:border-box}
+ .hero-band .hero figure{height:auto!important;min-height:0;margin:0}
+ .hero-band .hero figure img{height:calc(100svh - 235px)!important;max-height:600px;min-height:0;object-fit:contain;width:100%}
+ .hero-band .hero h1{font-size:clamp(44px,4.1vw,62px)!important;line-height:1.06}.hero-band .hero .lead{font-size:20px;line-height:1.4;margin-top:20px}.hero-band .hero .recipient{font-size:17px}.hero-band .hero .actions{margin-top:22px}
+}
