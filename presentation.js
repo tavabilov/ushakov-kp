@@ -35,3 +35,11 @@ const observer=new IntersectionObserver(entries=>entries.forEach(({target,isInte
 }),{threshold:.18});
 document.querySelectorAll('.talk-section').forEach(section=>observer.observe(section));
 reduceMotion.addEventListener('change',event=>{if(event.matches)document.getAnimations().forEach(a=>a.cancel());});
+// Cover choreography follows the approved reference without hiding content by default.
+function enterCover(){
+ if(reduceMotion.matches)return;
+ const cover=document.querySelector('.hero');
+ cover?.querySelector('figure')?.animate([{clipPath:'inset(0 22% 0 0)',opacity:.45},{clipPath:'inset(0)',opacity:1}],{duration:1050,easing:'cubic-bezier(.16,1,.3,1)'});
+ cover?.querySelector('.hero-copy')?.animate([{transform:'translateY(26px)',opacity:.4},{transform:'none',opacity:1}],{duration:850,easing:'cubic-bezier(.16,1,.3,1)'});
+}
+if(document.readyState==='complete')enterCover();else window.addEventListener('load',enterCover,{once:true});
