@@ -32,3 +32,5 @@ body{background:var(--ref-paper)}header{position:absolute!important;top:12px;lef
  #plan .plan-showcase{padding:12px 18px!important}#plan .report-strip{margin-top:14px;padding-top:14px}
 }
 .talk-section .deep-body a.button{background:#2a4179!important;color:#fff!important}
+/* Original official two-doctor composition, preserved uncropped. */
+.hero-band .hero figure img{object-fit:contain!important;object-position:center bottom!important;border-radius:0!important}
