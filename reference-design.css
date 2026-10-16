@@ -34,3 +34,10 @@ body{background:var(--ref-paper)}header{position:absolute!important;top:12px;lef
 .talk-section .deep-body a.button{background:#2a4179!important;color:#fff!important}
 /* Original official two-doctor composition, preserved uncropped. */
 .hero-band .hero figure img{object-fit:contain!important;object-position:center bottom!important;border-radius:0!important}
+/* White opening requested by the client, with a slightly larger original photograph. */
+.hero-band{background:#fff!important}
+header{background:transparent!important}.nav{background:#fff!important;border-color:#d2dcec!important;box-shadow:0 10px 28px #14294e0b}.nav nav a{color:#2a4179!important}.nav .print{background:#edf2fb!important;color:#2a4179!important}.brand-partners{border-color:#d2dcec!important}
+.hero-band .hero{color:#273249}.hero-band .hero h1{color:#2a4179!important}.hero-band .hero h1 em{color:#2a4179!important}.hero-band .hero .recipient,.hero-band .hero .lead,.hero-band .hero figcaption{color:#425573!important}.hero-band .hero .button{background:#2a4179!important;color:#fff!important}.hero-band .hero .text-link{color:#2a4179!important}.cover-anchors{border-color:#d2dcec}.cover-anchors strong{color:#2a4179}.cover-anchors span{color:#425573}
+.hero-band .hero figure img{transform:scale(1.08);transform-origin:center center}
+@media screen and (min-width:1000px){.hero-band .hero{column-gap:42px;grid-template-columns:1.06fr .94fr}.hero-band .hero figcaption{margin-top:22px}}
+@media(max-width:999px){header{background:#fff!important}}
